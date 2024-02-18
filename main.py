@@ -36,7 +36,7 @@ is_game_on = True
 while is_game_on:
 
     if marked_state_count <= 50:
-        state = screen.textinput(title=f"{marked_state_count}/50 State Correct", prompt="Enter State : ").capitalize()
+        state = screen.textinput(title=f"{marked_state_count}/50 State Correct", prompt="Enter State : ").title()
         if state:
             is_marked = set_state()
             if is_marked:
