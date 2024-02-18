@@ -8,17 +8,19 @@ screen.addshape(image)
 turtle.shape(image)
 
 data = pandas.read_csv('50_states.csv')
+
 marked_state_count = 0
 
 
-def set_state(marked_state):
+def set_state():
     if state in data.state.values:
         data_row = data[data.state == state]
         xcor = data_row.x.values[0]
         ycor = data_row.y.values[0]
         positions = (xcor, ycor)
         set_name(positions)
-        marked_state += 1
+        return True
+    return False
 
 
 def set_name(positions):
@@ -30,12 +32,15 @@ def set_name(positions):
 
 
 is_game_on = True
+
 while is_game_on:
     print(marked_state_count)
     if marked_state_count <= 50:
         state = screen.textinput(title="US State Game", prompt="Enter State : ").capitalize()
         if state:
-            set_state(marked_state_count)
+            is_marked = set_state()
+            if is_marked:
+                marked_state_count += 1
         else:
             is_game_on = False
     else:
