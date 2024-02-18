@@ -31,18 +31,14 @@ def set_name(positions):
 
 
 def write_data():
-    missing_states = []
-    for states in data.state.tolist():
-        if states not in marked_state:
-            missing_states.append(states)
+    missing_states = [states for states in data.state.tolist() if states not in marked_state]
     missing_data = pandas.DataFrame(missing_states)
-    missing_data.to_csv()
+    missing_data.to_csv('state_to_learn.csv')
 
 
 is_game_on = True
 
 while is_game_on:
-    print(marked_state)
     if len(marked_state) <= 50:
         state = screen.textinput(title=f"{len(marked_state)}/50 State Correct", prompt="Enter State : ").title()
         if state in data.state.values:
