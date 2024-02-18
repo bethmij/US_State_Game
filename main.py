@@ -1,3 +1,4 @@
+import sys
 import turtle
 from turtle import Turtle, Screen
 import pandas
@@ -8,41 +9,45 @@ screen.addshape(image)
 turtle.shape(image)
 
 data = pandas.read_csv('50_states.csv')
+marked_state = []
 
-marked_state_count = 0
+for states in data.state.tolist():
+    print(states)
 
-
-def set_state():
-    if state in data.state.values:
-        data_row = data[data.state == state]
-        xcor = data_row.x.values[0]
-        ycor = data_row.y.values[0]
-        positions = (xcor, ycor)
-        set_name(positions)
-        return True
-    return False
-
-
-def set_name(positions):
-    timmy = Turtle()
-    timmy.penup()
-    timmy.goto(positions)
-    timmy.hideturtle()
-    timmy.write(f"{state}", align='center', font=('Arial', 10, 'normal'))
-
-
-is_game_on = True
-
-while is_game_on:
-
-    if marked_state_count <= 50:
-        state = screen.textinput(title=f"{marked_state_count}/50 State Correct", prompt="Enter State : ").title()
-        if state:
-            is_marked = set_state()
-            if is_marked:
-                marked_state_count += 1
-        else:
-            is_game_on = False
-    else:
-        is_game_on = False
-turtle.mainloop()
+#
+# def set_state():
+#
+#     if state not in marked_state:
+#         data_row = data[data.state == state]
+#         xcor = data_row.x.values[0]
+#         ycor = data_row.y.values[0]
+#         positions = (xcor, ycor)
+#         set_name(positions)
+#         marked_state.append(state)
+#
+#
+# def set_name(positions):
+#     timmy = Turtle()
+#     timmy.penup()
+#     timmy.goto(positions)
+#     timmy.hideturtle()
+#     timmy.write(f"{state}", align='center', font=('Arial', 10, 'normal'))
+#
+# def write_data():
+#     for states in data.state.tolist():
+#         print(states)
+#
+#
+# is_game_on = True
+#
+# while is_game_on:
+#     print(marked_state)
+#     if len(marked_state) <= 50:
+#         state = screen.textinput(title=f"{len(marked_state)}/50 State Correct", prompt="Enter State : ").title()
+#         if state in data.state.values:
+#             set_state()
+#         elif state == 'Exit':
+#             sys.exit()
+#     else:
+#         is_game_on = False
+# turtle.mainloop()
