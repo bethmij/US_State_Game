@@ -34,9 +34,9 @@ def set_name(positions):
 is_game_on = True
 
 while is_game_on:
-    print(marked_state_count)
+
     if marked_state_count <= 50:
-        state = screen.textinput(title="US State Game", prompt="Enter State : ").capitalize()
+        state = screen.textinput(title=f"{marked_state_count}/50 State Correct", prompt="Enter State : ").capitalize()
         if state:
             is_marked = set_state()
             if is_marked:
