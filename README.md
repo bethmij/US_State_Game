@@ -10,4 +10,4 @@ This Python application is an interactive game where players can test their know
 ✅ Python | Tkinter
 
 
-<img src="./1.png" alt="login" width="600"/>
+<img src="./1.png" alt="login" width="800"/>
