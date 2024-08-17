@@ -34,7 +34,7 @@ def write_data():
     missing_states = [states for states in data.state.tolist() if states not in marked_state]
     missing_data = pandas.DataFrame(missing_states)
     missing_data.to_csv('state_to_learn.csv')
-l
+
 
 is_game_on = True
 
